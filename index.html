@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>API Ganhe Você</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -223,6 +223,23 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introducao" class="toc-h1 toc-link" data-title="introducao">Introdução</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#endpoint" class="toc-h2 toc-link" data-title="endpoint">Endpoint</a>
+                  </li>
+                  <li>
+                    <a href="#metodos-de-requisicoes-permitidos" class="toc-h2 toc-link" data-title="metodos-de-requisicoes-permitidos">Métodos de Requisições Permitidos</a>
+                  </li>
+                  <li>
+                    <a href="#convencao" class="toc-h2 toc-link" data-title="convencao">Convenção</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#autenticacao" class="toc-h1 toc-link" data-title="autenticacao">Autenticação</a>
+          </li>
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
@@ -254,6 +271,26 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introducao'>Introdução</h1>
+<p>O Ganhe Você fornece uma API para todos que queiram desenvolver apenas a camada de requisição e deixar toda parte da gestão do negócio com nossa plataforma.</p>
+<h2 id='endpoint'>Endpoint</h2><h3 id='ambiente-de-homologacao'>Ambiente de Homologação</h3>
+<p>https://apihomologacao.ganhevoce.com.br/v1</p>
+<h3 id='ambiente-de-producao'>Ambiente de Produção</h3>
+<p>https://api.ganhevoce.com.br/v1</p>
+<h2 id='metodos-de-requisicoes-permitidos'>Métodos de Requisições Permitidos</h2>
+<p>Os métodos de requisições permitidos na API do Ganhe Você são: GET, POST, PUT e DELETE</p>
+<h2 id='convencao'>Convenção</h2>
+<ul>
+<li>Nas requisições GET e DELETE, os valores dos parâmetros que foram strings, deverão ser codificados (URL Encode).</li>
+</ul>
+<h1 id='autenticacao'>Autenticação</h1>
+<p>A autenticação será feita em toda e qualquer solicitação feita para a API.  Você precisará solicitar um usuário e uma chave para autenticação. Envie um e-mail para contato@o3midia.com.br e solicite o usuário e a chave.</p>
+
+<blockquote>
+<p>O par usuário/chave são os mesmos para o ambiente de produção e homologação</p>
+</blockquote>
+
+<p>Com usuário e chave em mãos, você poderá..</p>
+<h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
 
 <p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
