@@ -288,54 +288,15 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 <p><code>curl -X GET -u USUARIO:CHAVE https://api.ganhevoce.com.br/v1/ACAO</code></p>
 <h1 id='produto'>Produto</h1><h2 id='listar-produtos'>Listar Produtos</h2>
 <p>Lista dados de produtos pelos ID&#39;s informados.</p>
-<h3 id='parametros'>Parâmetros</h3>
-<table><thead>
-<tr>
-<th>Parâmetro</th>
-<th>Tipo</th>
-<th>Obrigatório</th>
-<th>Valor Padrão</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>produto_id</td>
-<td>int</td>
-<td>sim</td>
-<td></td>
-<td>ID do produto</td>
-</tr>
-<tr>
-<td>pagina_inicial</td>
-<td>int</td>
-<td>não</td>
-<td>1</td>
-<td>Número da página</td>
-</tr>
-<tr>
-<td>quantidade_por_pagina</td>
-<td>int</td>
-<td>não</td>
-<td>100</td>
-<td>Quantidade de produtos por página. O limite máximo é de 100 produtos por página.</td>
-</tr>
-<tr>
-<td>ordem</td>
-<td>int</td>
-<td>não</td>
-<td>1</td>
-<td>Determina a ordenação do resultado.<br /><br />1 = Relevância<br />2 = Preço Crescente<br />3 = Preço Decrescente<br />4 = Nome do Produto Crescente<br />5 = Nome do Produto Decrescente</td>
-</tr>
-</tbody></table>
 
 <blockquote>
-<p>GET - /v1/produto/listar-produtos</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
--u USUARIO:CHAVE <span class="se">\</span>
-<span class="s2">"https://api.ganhevoce.com.br/v1/produto/listar-produtos?produto_id=372,624&amp;pagina_inicial=1&amp;quantidade_por_pagina=40&amp;ordem=4"</span>
-</code></pre>
-<blockquote>
+<p>GET - /v1/produto/listar-produtos
+<code>shell
+curl -X GET \
+-u USUARIO:CHAVE \
+&quot;https://api.ganhevoce.com.br/v1/produto/listar-produtos?produto_id=372,624&amp;pagina_inicial=1&amp;quantidade_por_pagina=40&amp;ordem=4&quot;
+</code></p>
+
 <p>Resposta 200 Ok.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
@@ -392,10 +353,45 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+</span></code></pre><h3 id='parametros'>Parâmetros</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Valor Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>produto_id</td>
+<td>int</td>
+<td>sim</td>
+<td></td>
+<td>ID do produto</td>
+</tr>
+<tr>
+<td>pagina_inicial</td>
+<td>int</td>
+<td>não</td>
+<td>1</td>
+<td>Número da página</td>
+</tr>
+<tr>
+<td>quantidade_por_pagina</td>
+<td>int</td>
+<td>não</td>
+<td>100</td>
+<td>Quantidade de produtos por página. O limite máximo é de 100 produtos por página.</td>
+</tr>
+<tr>
+<td>ordem</td>
+<td>int</td>
+<td>não</td>
+<td>1</td>
+<td>Determina a ordenação do resultado.<br /><br />1 = Relevância<br />2 = Preço Crescente<br />3 = Preço Decrescente<br />4 = Nome do Produto Crescente<br />5 = Nome do Produto Decrescente.</td>
+</tr>
+</tbody></table>
 <h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
