@@ -287,13 +287,13 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 
 <p><code>curl -X GET -u USUARIO:CHAVE https://api.ganhevoce.com.br/v1/METODO</code></p>
 <h1 id='produto'>Produto</h1><h2 id='listar-produtos'>Listar Produtos</h2>
-<p><code>GET - /v1/produto/listar-produtos</code>
-<code>shell
-curl -X GET \
--u USUARIO:CHAVE \
-&quot;https://api.ganhevoce.com.br/v1/produto/listar-produtos?produto_id=372,624,1381&amp;pagina_inicial=1&amp;quantidade_por_pagina=40&amp;ordem=4&quot;
-</code></p>
-
+<blockquote>
+<p>GET - /v1/produto/listar-produtos</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+-u USUARIO:CHAVE <span class="se">\</span>
+<span class="s2">"https://api.ganhevoce.com.br/v1/produto/listar-produtos?produto_id=372,624,1381&amp;pagina_inicial=1&amp;quantidade_por_pagina=40&amp;ordem=4"</span>
+</code></pre>
 <blockquote>
 <p>Resposta 200 Ok.</p>
 </blockquote>
