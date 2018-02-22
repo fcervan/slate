@@ -245,10 +245,7 @@
                     <a href="#listar-produtos" class="toc-h2 toc-link" data-title="listar-produtos">Listar Produtos</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="get-a-specific-kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="delete-a-specific-kitten">Delete a Specific Kitten</a>
+                    <a href="#pesquisar-produtos" class="toc-h2 toc-link" data-title="pesquisar-produtos">Pesquisar Produtos</a>
                   </li>
               </ul>
           </li>
@@ -290,7 +287,7 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 <p>Lista dados de produtos pelos ID&#39;s informados.</p>
 
 <blockquote>
-<p>GET - /v1/produto/listar-produtos</p>
+<p>GET /v1/produto/listar-produtos</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
 -u USUARIO:CHAVE <span class="se">\</span>
@@ -392,86 +389,87 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 <td>Determina a ordenação do resultado.<br /><br />1 = Relevância<br />2 = Preço Crescente<br />3 = Preço Decrescente<br />4 = Nome do Produto Crescente<br />5 = Nome do Produto Decrescente.</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id='pesquisar-produtos'>Pesquisar Produtos</h2>
+<p>Retorna uma lista de produtos de acordo com o termo da pesquisa.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<blockquote>
+<p>GET /v1/produto/pesquisar-produtos</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+-u USUARIO:CHAVE <span class="se">\</span>
+<span class="s2">"https://api.ganhevoce.com.br/v1/produto/pesquisar-produtos?termo_pesquisa=cabo+usb"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Resposta 200 Ok.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"produto_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nome_produto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabo USB Android p/ carregar e transmissão de dados - 1.0m - cor azul"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url_produto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://acisa.ganhevoce.local/produto/30/cabo-usb-android-p-carregar-e-transmissao-de-dados---10m---cor-azul"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cliente_id_loja"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"central_cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">149</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nickname_loja"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99smart-24534982000160"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2563</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acessórios"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tecnologia;Telefonia;Acessórios"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categoria_encadeada_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tecnologia-telefonia-acessorios"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_produto"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_por_produto"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_final_produto"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_pontos"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_pontos_em_reais"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pontos_comprador_em_reais"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pontos_comprador"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comissao_indicador"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"descricao_produto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabo USB Android p/ carregar e transmissão de dados - 1.0m - cor azul</span><span class="se">\r\n\r\n</span><span class="s2">Características:</span><span class="se">\r\n</span><span class="s2">1000ma</span><span class="se">\r\n</span><span class="s2">Compatível com USB 2.0</span><span class="se">\r\n</span><span class="s2">2 em 1: Transmissão de dados e carregamento</span><span class="se">\r\n</span><span class="s2">Material de alta proteção e de sustentabilidade ambiental</span><span class="se">\r\n</span><span class="s2">Velocidade de transmissão chega à 480mbps"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantidade_estoque"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"regra_promocao"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imagens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://imgacisa.ganhevoce.local/2563/30_1.jpg"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"produto_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nome_produto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabo USB Android p/ carregar e transmissão de dados - 1.0m - cor rosa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url_produto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://acisa.ganhevoce.local/produto/37/cabo-usb-android-p-carregar-e-transmissao-de-dados---10m---cor-rosa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cliente_id_loja"</span><span class="p">:</span><span class="w"> </span><span class="mi">121</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"central_cliente_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">149</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nickname_loja"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99smart-24534982000160"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2563</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acessórios"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tecnologia;Telefonia;Acessórios"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"categoria_encadeada_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tecnologia-telefonia-acessorios"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_produto"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_por_produto"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_final_produto"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_pontos"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preco_pontos_em_reais"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pontos_comprador_em_reais"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pontos_comprador"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comissao_indicador"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"descricao_produto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabo USB Android p/ carregar e transmissão de dados - 1.0m - cor rosa</span><span class="se">\r\n\r\n</span><span class="s2">Características:</span><span class="se">\r\n</span><span class="s2">1000ma</span><span class="se">\r\n</span><span class="s2">Compatível com USB 2.0</span><span class="se">\r\n</span><span class="s2">2 em 1: Transmissão de dados e carregamento</span><span class="se">\r\n</span><span class="s2">Material de alta proteção e de sustentabilidade ambiental</span><span class="se">\r\n</span><span class="s2">Velocidade de transmissão chega à 480mbps"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantidade_estoque"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"regra_promocao"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"imagens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://imgacisa.ganhevoce.local/2563/37_1.jpg"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='parametros-2'>Parâmetros</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Valor Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>string</td>
+<td>sim</td>
+<td></td>
+<td>Termo da pesquisa baseada no nome de um produto ou nome de uma categoria.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
