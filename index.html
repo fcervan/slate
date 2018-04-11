@@ -506,7 +506,7 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
 -u USUARIO:CHAVE <span class="se">\</span>
-<span class="s2">"https://api.ganhevoce.com.br/v1/produto/cadastrar"</span> -d <span class="s1">''</span>
+<span class="s2">"https://api.ganhevoce.com.br/v1/produto/cadastrar"</span> -F <span class="s1">'imagens[]=@/home/ganhevoce/dell_2.jpg'</span> -F <span class="s1">'imagens[]=@/home/ganhevoce/dell_1.jpg'</span> -F <span class="s1">'cliente_id=15'</span> -F <span class="s1">'categoria_id=3096'</span> -F <span class="s1">'nome_produto=Notebook Dell 2'</span> -F <span class="s2">"descricao_produto=Descrição Notebook Dell"</span> -F <span class="s1">'preco_produto=33.30'</span> -F <span class="s1">'preco_por_produto=29.93'</span> -F <span class="s1">'preco_produto_pontos_em_reais=35.3'</span> -F <span class="s1">'pontos_em_reais=0.9'</span> -F <span class="s1">'comissao_indicador=1.00'</span> -F <span class="s1">'maximo_parcelas=1'</span> -F <span class="s1">'publicado=1'</span> -F <span class="s1">'quantidade_estoque=10'</span> -F <span class="s1">'regra_promocao=Regra da Promoção'</span> -F <span class="s1">'peso_produto=0.100'</span> -F <span class="s1">'altura_produto=10.00'</span> -F <span class="s1">'largura_produto=10.00'</span> -F <span class="s1">'profundidade_produto=10.00'</span>
 </code></pre>
 <blockquote>
 <p>Resposta 200 Ok.
@@ -561,63 +561,98 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 <td>float</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Preço do produto, ex.: 1053.99 (será R$ 1.053,99)</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
-<td>sim</td>
+<td>preco_por_produto</td>
+<td>float</td>
+<td>não</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Preço do produto utilizado para promoção. Quando utilizado, a plataforma desconsidera o campo &quot;preco_produto&quot; e assume como valor verdadeiro o preco_por_produto, exibindo no box do produto &quot;Preço De&quot; e &quot;Preço Por&quot;, ex.: 923.87 (será R$ 923,87)</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
+<td>preco_produto_pontos_em_reais</td>
+<td>float</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Preço do produto ou serviço que o comprador poderá pagar com WinPoints. O valor aqui é informado como float padrão, ex.: 22.7 <br />Para o comprador será exibido um custo de 227 WinPoints. Esse campo só irá aceitar múltiplos de 0.10</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
+<td>pontos_em_reais</td>
+<td>float</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Valor que será devolvido para o consumidor. O valor aqui é informado como float padrão, ex.: 0.9<br />O comprador receberá  9 WinPoints. Esse campo só irá aceitar múltiplos de 0.10</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
+<td>comissao_indicador</td>
+<td>float</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Valor que irá para o indicador do comprador, ex.: 3.41 (será R$ 3,41)</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
+<td>maximo_parcelas</td>
+<td>int</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Número máximo de parcelas do valor do produto ou serviço. Os valores aceitos são de 1 até 12</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
-<td>sim</td>
-<td></td>
-<td>Nome do produto ou serviço</td>
+<td>publicado</td>
+<td>int</td>
+<td>não</td>
+<td>0</td>
+<td>Define se, assim que inserido o produto ou serviço ele deverá ser exibido ou não no marketplace. 1 = Sim e 0 = Não</td>
 </tr>
 <tr>
-<td>nome_produto</td>
-<td>string</td>
+<td>quantidade_estoque</td>
+<td>int</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Quantidade de produtos ou serviços disponíveis. O próprio marketplace se engarrega se ir subtraindo conforme os itens forem sendo comprados</td>
 </tr>
 <tr>
-<td>nome_produto</td>
+<td>regra_promocao</td>
 <td>string</td>
+<td>não</td>
+<td></td>
+<td>Campo de texto livre para adicionar regras específica sobre a venda do produto ou serviço</td>
+</tr>
+<tr>
+<td>peso_produto</td>
+<td>float</td>
+<td>depende</td>
+<td></td>
+<td>Valor do peso do produto. Este campo se torna obrigatório somente quando o lojista escolher fazer entregas via Correios. A precisão deste campo é de 3 casas decimais e a unidade de medida a ser considerada é Quilo Ex.: para você informar um peso de 159 gr, informe 0.159, para 1,500 kg informe 1.500</td>
+</tr>
+<tr>
+<td>altura_produto</td>
+<td>float</td>
+<td>depende</td>
+<td></td>
+<td>Valor da altura do produto. Este campo se torna obrigatório somente quando o lojista escolher fazer entregas via Correios.  A unidade de medida utilizada é centímetros Ex.: para você informar uma altura de 29,64 cm, informe 29.64</td>
+</tr>
+<tr>
+<td>largura_produto</td>
+<td>float</td>
+<td>depende</td>
+<td></td>
+<td>Valor da largura do produto. Este campo se torna obrigatório somente quando o lojista escolher fazer entregas via Correios.  A unidade de medida utilizada é centímetros Ex.: para você informar uma largura de 10,02 cm, informe 10.02</td>
+</tr>
+<tr>
+<td>profundidade_produto</td>
+<td>float</td>
+<td>depende</td>
+<td></td>
+<td>Valor da profundidade do produto. Este campo se torna obrigatório somente quando o lojista escolher fazer entregas via Correios.  A unidade de medida utilizada é centímetros Ex.: para você informar uma profundidade de 15,00 cm, informe 15.00</td>
+</tr>
+<tr>
+<td>imagens</td>
+<td>array</td>
 <td>sim</td>
 <td></td>
-<td>Nome do produto ou serviço</td>
+<td>Array com os endereços locais das imagens para fazer upload</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
