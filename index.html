@@ -264,6 +264,20 @@
               </ul>
           </li>
           <li>
+            <a href="#pedido" class="toc-h1 toc-link" data-title="pedido">Pedido</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-pedidos-por-id-39-s" class="toc-h2 toc-link" data-title="listar-pedidos-por-id-s">Listar Pedidos Por ID's</a>
+                  </li>
+                  <li>
+                    <a href="#listar-pedidos-por-status" class="toc-h2 toc-link" data-title="listar-pedidos-por-status">Listar Pedidos Por Status</a>
+                  </li>
+                  <li>
+                    <a href="#entrega-de-item-do-pedido" class="toc-h2 toc-link" data-title="entrega-de-item-do-pedido">Entrega de Item do Pedido</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
           </li>
       </div>
@@ -826,7 +840,7 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
 -u USUARIO:CHAVE <span class="se">\</span>
-<span class="s2">"https://ganhevocecentral.local/v1/categoria/listar?categoria_id=1,2,3,4,5,6,7,8,9,10,11,17,26,57,64,71,78,85,92,99&amp;quantidade_por_pagina=5&amp;numero_pagina=1&amp;ordenacao=2
+<span class="s2">"https://api.ganhevoce.com.br/v1/categoria/listar?categoria_id=1,2,3,4,5,6,7,8,9,10,11,17,26,57,64,71,78,85,92,99&amp;quantidade_por_pagina=5&amp;numero_pagina=1&amp;ordenacao=2
 </span></code></pre>
 <blockquote>
 <p>Resposta 200 Ok.</p>
@@ -933,6 +947,126 @@ O par usuário/chave são os mesmos para o ambiente de produção e homologaçã
 <td>Determina a ordenação do resultado.<br /><br />1 = Ordem do cadastro crescente<br />2 = Ordem do cadastro decrescente<br />3 = Nome da categoria crescente<br />4 = Nome da categoria decrescente<br />5 = Nome da categoria encadeada crescente.<br />6 = Nome da categoria encadeada decrescente.<br />7 = Tipo categoria crescente.<br />8 = Tipo categoria decrescente.</td>
 </tr>
 </tbody></table>
+<h1 id='pedido'>Pedido</h1><h2 id='listar-pedidos-por-id-39-s'>Listar Pedidos Por ID&#39;s</h2>
+<p>Lista os pedidos pelos ID&#39;s informados.</p>
+
+<blockquote>
+<p>GET /v1/pedido/listar</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+-u USUARIO:CHAVE <span class="se">\</span>
+<span class="s2">"https://api.ganhevoce.com.br/v1/pedido/listar-por-id?pedido_id=24795,6978,99&amp;quantidade_por_pagina=5&amp;numero_pagina=1&amp;ordenacao=2
+</span></code></pre>
+<blockquote>
+<p>Resposta 200 Ok.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"categorias"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serviços"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pai_categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serviços"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nivel_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tipo_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serviço"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exibe_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tecnologia"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pai_categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tecnologia"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nivel_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tipo_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produto"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exibe_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casa e Decoração"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pai_categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casa e Decoração"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nivel_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tipo_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produto"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exibe_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moda Infantil"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pai_categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moda Infantil"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nivel_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tipo_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produto"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exibe_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nome_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saúde e Bem Estar"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pai_categoria_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categoria_encadeada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saúde e Bem Estar"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nivel_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tipo_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Produto"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exibe_categoria"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facets"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"paginacao"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"total_encontrado"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"primeira_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pagina_anterior"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pagina_atual"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pagina_proxima"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ultima_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_paginas"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parametros-6'>Parâmetros</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Valor Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status_pedido_id</td>
+<td>int</td>
+<td>sim</td>
+<td></td>
+<td>ID do status do pedido.<br /><br />1 = Pedido Pago<br />2 = Pedido Entregue<br />3 = Esperando Confirmação de Pagamento<br />4 = Pedido Cancelado<br />5 = Entrar Em Contato Com SAC<br />7 = Pagamento Expirado</td>
+</tr>
+<tr>
+<td>numero_pagina</td>
+<td>int</td>
+<td>não</td>
+<td>1</td>
+<td>Número da página</td>
+</tr>
+<tr>
+<td>quantidade_por_pagina</td>
+<td>int</td>
+<td>não</td>
+<td>50</td>
+<td>Quantidade de pedidos por página. O limite máximo é de 100 pedidos por página.</td>
+</tr>
+<tr>
+<td>ordenacao</td>
+<td>int</td>
+<td>não</td>
+<td>1</td>
+<td>Determina a ordenação do resultado.<br /><br />1 = Ordem do ID crescente<br />2 = Ordem do ID decrescente<br />3 = Nome da categoria crescente<br />4 = Nome da categoria decrescente<br />5 = Nome da categoria encadeada crescente.<br />6 = Nome da categoria encadeada decrescente.<br />7 = Tipo categoria crescente.<br />8 = Tipo categoria decrescente.</td>
+</tr>
+</tbody></table>
+<h2 id='listar-pedidos-por-status'>Listar Pedidos Por Status</h2>
+<p>Lista os pedidos pelos ID&#39;s dos status.</p>
+<h2 id='entrega-de-item-do-pedido'>Entrega de Item do Pedido</h2>
+<p>Informa ao Ganhe Você que um item do pedido foi entregue ao cliente.
+Se todos os itens do pedido foram entregues, este endpoint altera automaticamente o status do pedido para &quot;Pedido Entregue&quot; (status_pedido_id=2).</p>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
