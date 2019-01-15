@@ -308,7 +308,7 @@ Lista dados das categorias pelos ID's informados.
 ```shell
 curl -X GET \
 -u USUARIO:CHAVE \
-"https://ganhevocecentral.local/v1/categoria/listar?categoria_id=1,2,3,4,5,6,7,8,9,10,11,17,26,57,64,71,78,85,92,99&quantidade_por_pagina=5&numero_pagina=1&ordenacao=2
+"https://api.ganhevoce.com.br/v1/categoria/listar?categoria_id=1,2,3,4,5,6,7,8,9,10,11,17,26,57,64,71,78,85,92,99&quantidade_por_pagina=5&numero_pagina=1&ordenacao=2
 ```
 
 > Resposta 200 Ok.
@@ -386,5 +386,110 @@ categoria_id | int | sim |  | Lista de id's das categorias
 numero_pagina | int | não | 1 | Número da página
 quantidade_por_pagina | int | não | 50 | Quantidade de categorias por página. O limite máximo é de 100 categorias por página. 
 ordenacao | int | não | 1 | Determina a ordenação do resultado.<br /><br />1 = Ordem do cadastro crescente<br />2 = Ordem do cadastro decrescente<br />3 = Nome da categoria crescente<br />4 = Nome da categoria decrescente<br />5 = Nome da categoria encadeada crescente.<br />6 = Nome da categoria encadeada decrescente.<br />7 = Tipo categoria crescente.<br />8 = Tipo categoria decrescente. 
+
+
+# Pedido
+
+## Listar Pedidos Por ID's
+
+Lista os pedidos pelos ID's informados.
+
+> GET /v1/pedido/listar
+
+```shell
+curl -X GET \
+-u USUARIO:CHAVE \
+"https://api.ganhevoce.com.br/v1/pedido/listar-por-id?pedido_id=24795,6978,99&quantidade_por_pagina=5&numero_pagina=1&ordenacao=2
+```
+
+> Resposta 200 Ok.
+
+```json
+{
+    "categorias": {
+        "0": {
+            "categoria_id": "8",
+            "nome_categoria": "Serviços",
+            "pai_categoria_id": "0",
+            "categoria_encadeada": "Serviços",
+            "nivel_categoria": "1",
+            "tipo_categoria": "Serviço",
+            "exibe_categoria": "1",
+            "facets": null
+        },
+        "1": {
+            "categoria_id": "1",
+            "nome_categoria": "Tecnologia",
+            "pai_categoria_id": "0",
+            "categoria_encadeada": "Tecnologia",
+            "nivel_categoria": "1",
+            "tipo_categoria": "Produto",
+            "exibe_categoria": "1",
+            "facets": null
+        },
+        "2": {
+            "categoria_id": "2",
+            "nome_categoria": "Casa e Decoração",
+            "pai_categoria_id": "0",
+            "categoria_encadeada": "Casa e Decoração",
+            "nivel_categoria": "1",
+            "tipo_categoria": "Produto",
+            "exibe_categoria": "1",
+            "facets": null
+        },
+        "3": {
+            "categoria_id": "3",
+            "nome_categoria": "Moda Infantil",
+            "pai_categoria_id": "0",
+            "categoria_encadeada": "Moda Infantil",
+            "nivel_categoria": "1",
+            "tipo_categoria": "Produto",
+            "exibe_categoria": "1",
+            "facets": null
+        },
+        "4": {
+            "categoria_id": "4",
+            "nome_categoria": "Saúde e Bem Estar",
+            "pai_categoria_id": "0",
+            "categoria_encadeada": "Saúde e Bem Estar",
+            "nivel_categoria": "1",
+            "tipo_categoria": "Produto",
+            "exibe_categoria": "1",
+            "facets": null
+        }
+    },
+    "paginacao": {
+        "total_encontrado": 20,
+        "primeira_pagina": 1,
+        "pagina_anterior": null,
+        "pagina_atual": 1,
+        "pagina_proxima": 2,
+        "ultima_pagina": 4,
+        "total_paginas": 4
+    }
+}
+```
+
+### Parâmetros
+Parâmetro | Tipo  | Obrigatório | Valor Padrão | Descrição 
+--------- | -------  | ------- | ----------- | -----------
+status_pedido_id | int | sim |  | ID do status do pedido.<br /><br />1 = Pedido Pago<br />2 = Pedido Entregue<br />3 = Esperando Confirmação de Pagamento<br />4 = Pedido Cancelado<br />5 = Entrar Em Contato Com SAC<br />7 = Pagamento Expirado
+numero_pagina | int | não | 1 | Número da página
+quantidade_por_pagina | int | não | 50 | Quantidade de pedidos por página. O limite máximo é de 100 pedidos por página. 
+ordenacao | int | não | 1 | Determina a ordenação do resultado.<br /><br />1 = Ordem do ID crescente<br />2 = Ordem do ID decrescente<br />3 = Nome da categoria crescente<br />4 = Nome da categoria decrescente<br />5 = Nome da categoria encadeada crescente.<br />6 = Nome da categoria encadeada decrescente.<br />7 = Tipo categoria crescente.<br />8 = Tipo categoria decrescente. 
+
+## Listar Pedidos Por Status
+
+Lista os pedidos pelos ID's dos status.
+
+
+## Entrega de Item do Pedido
+
+Informa ao Ganhe Você que um item do pedido foi entregue ao cliente.
+Se todos os itens do pedido foram entregues, este endpoint altera automaticamente o status do pedido para "Pedido Entregue" (status_pedido_id=2).
+
+
+
+
 
 
