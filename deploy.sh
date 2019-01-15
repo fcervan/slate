@@ -213,5 +213,5 @@ else
   run_build
   main "$@"
 fi
-cp -R /var/www/slate/build/* /var/www/ganhevocecentral/public/slate/
+cp -R ./build/* /var/www/ganhevocecentral/public/slate/
 cat /var/www/ganhevocecentral/public/slate/index.html > /var/www/ganhevocecentral/application/views/scripts/documentacao/index.phtml

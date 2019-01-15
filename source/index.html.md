@@ -483,7 +483,7 @@ ordenacao | int | não | 1 | Determina a ordenação do resultado.<br /><br />1 
 Lista os pedidos pelos ID's dos status.
 
 
-## Entrega de Item do Pedido
+## Item do Pedido Entregue
 
 Informa ao Ganhe Você que um item do pedido foi entregue ao cliente.
 Se todos os itens do pedido foram entregues, este endpoint altera automaticamente o status do pedido para "Pedido Entregue" (status_pedido_id=2).
