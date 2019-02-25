@@ -217,3 +217,4 @@ cp -R ./build/* /var/www/ganhevocecentral/public/slate/
 cat /var/www/ganhevocecentral/public/slate/index.html > /var/www/ganhevocecentral/application/views/scripts/documentacao/index.phtml
 sed -i 's/stylesheets\/screen.css/\/slate\/stylesheets\/screen.css/i' /var/www/ganhevocecentral/application/views/scripts/documentacao/index.phtml 
 sed -i 's/stylesheets\/print.css/\/slate\/stylesheets\/print.css/i' /var/www/ganhevocecentral/application/views/scripts/documentacao/index.phtml
+sed -i 's/javascripts\/all.js/\/slate\/javascripts\/all.js/i' /var/www/ganhevocecentral/application/views/scripts/documentacao/index.phtml
