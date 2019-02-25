@@ -1108,27 +1108,9 @@ Se todos os itens do pedido foram entregues, este endpoint altera automaticament
 }'</span>
 </code></pre>
 <blockquote>
-<p>Resposta 200 Ok.</p>
+<p>Corpo da requisição</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"transacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8A5F30F519834FE29D84423C6B04BEF5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://faturas.iugu.com/8a5f30f5-1983-4fe2-9d84-423c6b04bef5-b8b2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://faturas.iugu.com/8a5f30f5-1983-4fe2-9d84-423c6b04bef5-b8b2.pdf"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"retorno"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pedido_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mensagem_generica"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pedido pago com sucesso"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"debug"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"central_pedido_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"central_cliente_ponto_comissao_extrato_id_lojista"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1115"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"sucesso"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"pedido_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='corpo-da-requisicao'>Corpo da requisição</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"token"</span><span class="p">:</span><span class="s2">"[IUGU_TOKEN]"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"cliente_loja_id"</span><span class="p">:</span><span class="mi">5665</span><span class="p">,</span><span class="w">
    </span><span class="s2">"central_cliente_id"</span><span class="p">:</span><span class="mi">281</span><span class="p">,</span><span class="w">
@@ -1150,6 +1132,28 @@ Se todos os itens do pedido foram entregues, este endpoint altera automaticament
       </span><span class="s2">"dias"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"servico"</span><span class="p">:</span><span class="s2">"PAC"</span><span class="w">
    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Resposta 200 Ok.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"transacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8A5F30F519834FE29D84423C6B04BEF5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://faturas.iugu.com/8a5f30f5-1983-4fe2-9d84-423c6b04bef5-b8b2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://faturas.iugu.com/8a5f30f5-1983-4fe2-9d84-423c6b04bef5-b8b2.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"retorno"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pedido_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"512"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mensagem_generica"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pedido pago com sucesso"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"debug"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"central_pedido_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"central_cliente_ponto_comissao_extrato_id_lojista"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1115"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"sucesso"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pedido_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='parametros-7'>Parâmetros</h3>
 <table><thead>
