@@ -489,7 +489,104 @@ Informa ao Ganhe Você que um item do pedido foi entregue ao cliente.
 Se todos os itens do pedido foram entregues, este endpoint altera automaticamente o status do pedido para "Pedido Entregue" (status_pedido_id=2).
 
 
+## Checkout
+
+Faz o checkout do Pedido, mandando as informações para a API da Iugu. Para compras com cartão de crédito, deve ser mandado o token da Iugu.
+
+Documentação da Iugu: https://dev.iugu.com/reference
+
+> GET /v1/pedido
+
+```shell
+curl -X POST \
+-u USUARIO:CHAVE \
+  http://api.ganhevoce.com.br/v1/pedido \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+   "token":"A788F23B469446E2B168D5C5231F6A1A",
+   "cliente_loja_id":5665,
+   "central_cliente_id":281,
+   "forma_pagamento":"credito",
+   "produtos":[
+      {
+         "id":7275,
+         "quantidade":5
+      },
+      {
+         "id":7247,
+         "quantidade":10
+      }
+   ],
+   "frete":{
+      "frete_selecionado":"04510",
+      "cep_informado":"09210010",
+      "valor":"18,80",
+      "dias":"5",
+      "servico":"PAC"
+   }
+}'
+```
+
+> Corpo da requisição
+
+```json
+{
+   "token":"[IUGU_TOKEN]",
+   "cliente_loja_id":5665,
+   "central_cliente_id":281,
+   "forma_pagamento":"credito",
+   "produtos":[
+      {
+         "id":7275,
+         "quantidade":5
+      },
+      {
+         "id":7247,
+         "quantidade":10
+      }
+   ],
+   "frete":{
+      "frete_selecionado":"04510",
+      "cep_informado":"09210010",
+      "valor":"18,80",
+      "dias":"5",
+      "servico":"PAC"
+   }
+}
+```
+
+> Resposta 200 Ok.
+
+```json
+{
+    "transacao": "8A5F30F519834FE29D84423C6B04BEF5",
+    "url": "https://faturas.iugu.com/8a5f30f5-1983-4fe2-9d84-423c6b04bef5-b8b2",
+    "pdf": "https://faturas.iugu.com/8a5f30f5-1983-4fe2-9d84-423c6b04bef5-b8b2.pdf",
+    "retorno": 1,
+    "pedido_id": "512",
+    "mensagem_generica": "Pedido pago com sucesso",
+    "debug": [
+        {
+            "central_pedido_id": "503",
+            "central_cliente_ponto_comissao_extrato_id_lojista": "1115"
+        },
+        {
+            "sucesso": 1,
+            "pedido_id": "503"
+        }
+    ]
+}
+```
 
 
+### Parâmetros
 
-
+Parâmetro | Tipo  | Obrigatório | Valor Padrão | Descrição 
+--------- | -------  | ------- | ----------- | -----------
+token | string | não |  | Token a ser mandado para API da IUGU, caso o campo `forma_pagamento` for `credito` 
+cliente_loja_id | int | sim |  | Cliente ID da Loja 
+central_cliente_id | int | sim |  | Central Cliente ID do usuário que realizou a compra 
+forma_pagamento | string | sim |  | Forma de pagamento a ser utilizada, podendo ser: <br><br>`credito`<br>`boleto`<br>`winpoints`<br> 
+produtos | array | sim |  | Array com os objetos de produto contendo ID do produto e quantidade 
+frete | objeto | sim |  | Objeto contendo os dados de frete, o campo `frete_selecionado` contém o código dos Correios referente ao tipo de envio 
